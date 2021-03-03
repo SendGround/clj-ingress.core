@@ -34,7 +34,8 @@
       :spec
       :tls
       first
-      :hosts))
+      :hosts
+      set))
 
 (defn remove-tls-host [yml host]
   (let [update-tls (fn [tls-list]
@@ -56,6 +57,16 @@
       (remove-host-rule host)
       (remove-tls-host host)))
 
+(defn add-tls-host [yml host]
+  (if-not ((tls-hosts yml) host)
+    (let [update-tls (fn [tls-list]
+                      (let [tls (first tls-list)
+                            updated (update tls :hosts conj host)]
+                        (list updated)))]
+      (update-in yml [:spec :tls] update-tls))
+    yml))
+
+    
 
 (defn get-ingress-rule [yml host]
   (-> yml
@@ -72,3 +83,17 @@
                    :pathType pathType
                    :path path})}})
 
+
+
+(defn add-host-rule [yml host service-name service-port]
+  (if-not (get-ingress-rule yml host)
+    (let [rule (make-simple-ingress-rule :host host :service-name service-name :port-number service-port)]
+      (-> yml
+          (update-in [:spec :rules] conj rule)))
+    yml))
+
+
+(defn add-host [yml host service-name service-port]
+  (-> yml
+      (add-tls-host host)
+      (add-host-rule host service-name service-port)))

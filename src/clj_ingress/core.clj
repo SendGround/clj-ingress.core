@@ -22,7 +22,7 @@
    ["-s" "--service-name NAME" "Service Name"
     :default nil]
    ["-p" "--service-port PORT" "Service port"
-    :parse-fn int
+    :parse-fn #(Integer/parseInt %)
     :default nil]
    ["-H" "--host HOSTNAME" "Host Name"
     :default nil]
