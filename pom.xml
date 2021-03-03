@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>clj-ingress</groupId>
   <artifactId>clj-ingress.core</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>'0.0.1'</version>
   <name>clj-ingress.core</name>
   <description>FIXME: my new application.</description>
   <url>https://github.com/clj-ingress/clj-ingress.core</url>

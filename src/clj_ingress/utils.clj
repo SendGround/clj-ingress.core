@@ -61,18 +61,22 @@
   (if-not ((tls-hosts yml) host)
     (let [update-tls (fn [tls-list]
                       (let [tls (first tls-list)
-                            updated (update tls :hosts conj host)]
+                            updated (update tls :hosts concat [host])]
                         (list updated)))]
       (update-in yml [:spec :tls] update-tls))
     yml))
 
     
 
-(defn get-ingress-rule [yml host]
-  (-> yml
-      rules
-      (->> (filter #(= host (:host %))))
-      first))
+(defn get-ingress-rule
+  ([yml host]
+   (-> yml
+       rules
+       (->> (filter #(= host (:host %))))
+       first))
+  ([yml]
+   (-> yml
+       rules)))
 
 (defn make-simple-ingress-rule [& {:keys [host service-name port-number pathType path]
                                    :or {pathType "Prefix" path "/(.*)"}}]

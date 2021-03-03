@@ -31,7 +31,7 @@
     :id :help]])
 
 (def mandatory-options-by-command
-  {:get-rule #{:file :host}
+  {:get-rule #{:file}
    :get-tls-hosts #{:file}
    :add-host-rule #{:file :host :service-name :service-port}
    :remove-host #{:file :host}})
