@@ -100,10 +100,12 @@
    "Usage: clj-ingress [OPTIONS] command"
    "command may be one of:"
    ""
-   "- get-rule "
-   "- get-tls-hosts "
-   "- add-host-rule "
-   "- remove-host"
+   "  - get-rule "
+   "  - get-tls-hosts "
+   "  - add-host-rule "
+   "  - remove-host"
+   ""
+   "Options:"
    ""])
 
 

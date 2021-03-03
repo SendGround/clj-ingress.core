@@ -1,63 +1,38 @@
 # clj-ingress.core
 
-FIXME: my new application.
+[![Clojure CI](https://github.com/baskeboler/clj-ingress.core/actions/workflows/clojure.yml/badge.svg)](https://github.com/baskeboler/clj-ingress.core/actions/workflows/clojure.yml)
 
-## Installation
+Utility cli application to update kubernetes ingress yml files 
 
-Download from https://github.com/clj-ingress/clj-ingress.core
 
 ## Usage
 
-FIXME: explanation
+clj-ingress [OPTIONS] command
+command may be one of:
 
-Run the project directly, via `:exec-fn`:
+  - get-rule
+  - get-tls-hosts
+  - add-host-rule
+  - remove-host
 
-    $ clojure -X:run-x
-    Hello, Clojure!
 
-Run the project, overriding the name to be greeted:
 
-    $ clojure -X:run-x :name '"Someone"'
-    Hello, Someone!
-
-Run the project directly, via `:main-opts` (`-m clj-ingress.core`):
-
-    $ clojure -M:run-m
-    Hello, World!
-
-Run the project, overriding the name to be greeted:
-
-    $ clojure -M:run-m Via-Main
-    Hello, Via-Main!
-
-Run the project's tests (they'll fail until you edit them):
-
-    $ clojure -M:test:runner
-
-Build an uberjar:
-
-    $ clojure -X:uberjar
-
-This will update the generated `pom.xml` file to keep the dependencies synchronized with
-your `deps.edn` file. You can update the version information in the `pom.xml` using the
-`:version` argument:
-
-    $ clojure -X:uberjar :version '"1.2.3"'
-
-If you don't want the `pom.xml` file in your project, you can remove it, but you will
-also need to remove `:sync-pom true` from the `deps.edn` file (in the `:exec-args` for `depstar`).
-
-Run that uberjar:
-
-    $ java -jar clj-ingress.core.jar
 
 ## Options
 
-FIXME: listing of options this app accepts.
+  -f, --file PATH          nil  Input Ingress YAML file path
+  -s, --service-name NAME  nil  Service Name
+  -p, --service-port PORT  nil  Service port
+  -H, --host HOSTNAME      nil  Host Name
+  -h, --help
+[I]
+
 
 ## Examples
 
-...
+- `java -jar clj-ingress.core.jar get-tls-hosts -f ./ingress.yaml`
+- `java -jar clj-ingress.core.jar add-host-rule -f ./ingress.yaml -s api-service -p 8080 -H mynewingress.mydomain.com`
+
 
 ### Bugs
 
