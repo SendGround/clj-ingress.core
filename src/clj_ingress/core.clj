@@ -122,7 +122,7 @@
         (-> args
             (parse-opts cli-opts)
             handle-parse-result)]
-    (println res)
+    ;; (println res)
     (cond
       (some? errors)               (do
                                      (handle-errors errors)
