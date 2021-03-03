@@ -20,12 +20,11 @@ command may be one of:
 
 ## Options
 
-  -f, --file PATH          nil  Input Ingress YAML file path
-  -s, --service-name NAME  nil  Service Name
-  -p, --service-port PORT  nil  Service port
-  -H, --host HOSTNAME      nil  Host Name
-  -h, --help
-[I]
+-  -f, --file PATH          nil  Input Ingress YAML file path
+-  -s, --service-name NAME  nil  Service Name
+-  -p, --service-port PORT  nil  Service port
+-  -H, --host HOSTNAME      nil  Host Name
+-  -h, --help
 
 
 ## Examples
