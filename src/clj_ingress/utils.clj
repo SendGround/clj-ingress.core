@@ -101,3 +101,9 @@
   (-> yml
       (add-tls-host host)
       (add-host-rule host service-name service-port)))
+
+(defn default-service [yml]
+  (-> yml
+      :spec
+      :defaultBackend
+      :service))
